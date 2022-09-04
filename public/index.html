@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reddit</title>
+</head>
+<body>
+    <header>
+        <img class="logo" src="./image/RiddetLogo.PNG" alt="logo">
+        <div class="search-container">
+            <img src="search.png" alt="search">
+            <input type="text" placeholder="Search Reddit">
+        </div>
+        <button>Log In</button>
+        <button>Sign Up</button>
+    </header>
+    <main>
+        <section id="trending-today">
+            <div class="trending-card">
+                <h2>title </h2>
+                <p>content</p>
+            </div>
+            <div class="trending-card">
+                <h2>title </h2>
+                <p>content</p>
+            </div>   
+            <div class="trending-card">
+                <h2>title </h2>
+                <p>content</p>
+            </div>  
+            <div class="trending-card">
+                <h2>title </h2>
+                <p>content</p>
+            </div>   
+        </section>
+
+        <section id="all-posts">
+            <div class="post-card">
+                <div class="profile-username-container">
+                    <img class="profile-img" src="profile" alt="profile-image">
+                    <p class="username">username</p>
+                </div>
+                <p class="date-time">9 set 2001</p>
+                <h2 class="post-title">title</h2>
+                <p class="post-content">content</p>
+                <img class="post-img" src="post-img" alt="post-image">
+            </div>
+        </section>
+
+
+        <section id="login">
+            <img src="./image/loginBG.png" alt="">
+            <h2>Log In</h2>
+            <p>By continuing, you agree to our 
+                    <a href="https://www.redditinc.com/policies/user-agreement">  User Agreement </a> and 
+                    <a href="https://www.reddit.com/policies/privacy-policy"> Privacy Policy </a>.
+            </p>
+            <div>
+                <input class="username" type="text">
+                <input class="password" type="text">
+                <button>Log In</button> 
+                <p>New to Reddit? <button>SIGN UP</button></p>
+            </div>
+        </section>
+
+        <section id="sign-up">
+            <img src="./image/loginBG.png" alt="">
+            <h2>Sign Up</h2>
+            <p>By continuing, you are setting up a Reddit account and agree to our
+                    <a href="https://www.redditinc.com/policies/user-agreement">  User Agreement </a> and 
+                    <a href="https://www.reddit.com/policies/privacy-policy"> Privacy Policy </a>.
+            </p>
+            <div>
+                <input class="username" type="text" placeholder="username">
+                <input class="email" type="email" placeholder="email">
+                <input class="password" type="password" placeholder="password">
+                <input class="confirm-password" type="password" placeholder="confirm-password">
+                <button>Sign Up</button> 
+                <p>Already a redditor? <button>Log In</button></p>
+            </div>
+        </section>
+    </main>
+    <script src="./js/index.js"></script>
+</body>
+</html>
