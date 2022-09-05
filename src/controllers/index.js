@@ -1,5 +1,5 @@
-const { signUp } = require('./users');
+const { signUp, login } = require('./users');
 
 const { showAllPosts } = require('./posts');
 
-module.exports = { signUp, showAllPosts };
+module.exports = { signUp, showAllPosts, login };
