@@ -1,3 +1,5 @@
-const { signUp } = require('./users/signup');
+const { signUp } = require('./users');
 
-module.exports = { signUp };
+const { showAllPosts } = require('./posts');
+
+module.exports = { signUp, showAllPosts };
