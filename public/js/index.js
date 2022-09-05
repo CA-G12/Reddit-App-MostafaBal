@@ -8,12 +8,21 @@ const signupConfirmPassword = document.querySelector('#sign-up .confirm-password
 
 const signupButton = document.querySelector('#sign-up button');
 
+const loginButton = document.querySelector('#login button');
+
+const loginEmail = document.querySelector('#login .email');
+
+const loginPassword = document.querySelector('#login .password');
+
 const allPosts = document.querySelector('#all-posts');
+
+const navIsLogged = document.querySelector('#logged');
+
+const navNotLogged = document.querySelector('#not-logged');
 
 fetch('/allPosts')
   .then((data) => data.json())
   .then((res) => {
-    console.log(res);
     res.forEach((ele) => {
       const postCard = document.createElement('div');
       postCard.setAttribute('class', 'post-card');
@@ -67,12 +76,45 @@ signupButton.addEventListener('click', () => {
       'Content-type': 'application/json; charset=UTF-8',
     },
   };
-  console.log('in btn **');
   if (signupPassword.value === signupConfirmPassword.value) {
     fetch('/signUp', header)
-      .then((data) => console.log(data))
+      .then((data) => data.json())
+      .then((res) => {
+        if (res.isLogged === true) {
+          navIsLogged.style.display = 'block';
+          navNotLogged.style.display = 'none';
+        } else {
+          navIsLogged.style.display = 'none';
+          navNotLogged.style.display = 'block';
+        }
+      })
       .catch((err) => console.log(err));
   } else {
     window.alert('تتهبلش');
   }
+});
+
+loginButton.addEventListener('click', () => {
+  const header = {
+    method: 'POST',
+    body: JSON.stringify({
+      email: loginEmail.value,
+      password: loginPassword.value,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  };
+  fetch('/login', header)
+    .then((data) => data.json())
+    .then((res) => {
+      if (res.isLogged === true) {
+        navIsLogged.style.display = 'block';
+        navNotLogged.style.display = 'none';
+      } else {
+        navIsLogged.style.display = 'none';
+        navNotLogged.style.display = 'block';
+      }
+    })
+    .catch((err) => console.log(err));
 });
