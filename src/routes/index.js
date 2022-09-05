@@ -1,8 +1,15 @@
 const router = require('express').Router();
 
-const { signUp, showAllPosts } = require('../controllers');
+const { signUp, showAllPosts, login } = require('../controllers');
+
+// const verifyToken = require('../middlewares/verifyToken');
+
+
+router.get('/allPosts', showAllPosts);
 
 router.post('/signUp', signUp);
 
-router.get('/allPosts', showAllPosts);
+router.post('/login', login);
+
+
 module.exports = router;
