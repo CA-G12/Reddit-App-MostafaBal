@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/userProfile.css">
+</head>
+<body>
+
+<header>
+    
+    <nav id="logged">
+
+        <img class="logo" src="../image/redditLogo.PNG" alt="logo">
+        <div class="search-container">
+            <ion-icon name="search-outline"></ion-icon>
+            <input type="text" placeholder="Search Reddit">
+        </div>
+
+        <a href="../html/addPost.html">addpost</a>
+        <a href="../index.html">home</a>
+
+
+        <div class="navigation">
+                <div class="userBx">
+                        <div class="imgBx">
+                                <img src="../image/redditlogoMobile.PNG" alt="">
+                        </div>
+                        <p class="username">Mostafa</p>
+                </div>
+                <div class="menuToggle"></div>
+                <ul class="menu">
+                    <li><ion-icon name="person-outline"></ion-icon><a href="./userProfile.html" class="my-profile">My Profile</a></li>
+                    <li><ion-icon name="settings-outline"></ion-icon> <p> Setting </p> </li>
+                    <li><ion-icon name="log-out-outline"></ion-icon></p> Logout </p> </li>
+                </ul>
+        </div>
+
+
+
+
+
+    </nav>
+
+
+</header>
+
+
+    
+
+<main>
+    <section id="trending-today" style="display:none ;">
+        <div class="trending-card">
+            <h2>title </h2>
+            <p>content</p>
+        </div>
+        <div class="trending-card">
+            <h2>title </h2>
+            <p>content</p>
+        </div>   
+        <div class="trending-card">
+            <h2>title </h2>
+            <p>content</p>
+        </div>  
+        <div class="trending-card">
+            <h2>title </h2>
+            <p>content</p>
+        </div>   
+    </section>
+
+    <section id="posts-topUsers-container">
+
+        <div id="all-posts">
+            <div class="post-card">
+                <div class="vote">
+                    <ion-icon name="arrow-up-outline"></ion-icon>
+                    <p>5</p>
+                    <ion-icon name="arrow-down-outline"></ion-icon>            
+                </div>
+
+                <div class="profile-username-container">
+                    <img class="profile-img" src="profile" alt="profile-image">
+                    <p class="username">username</p>
+                </div>
+                <p class="date-time">9 set 2001</p>
+                <h2 class="post-title">title</h2>
+                <p class="post-content">content</p>
+                <img class="post-img" src="post-img" alt="post-image">
+                <div class="comments"> <ion-icon name="chatbox-outline"></ion-icon> <p>9.5K Comments</p></div>
+                </div> 
+
+        </div>
+
+        <div id="top-users-menu">
+            <h3>Top Users In Reddit</h3>
+                <div class="users">
+                    <p>1</p>
+                    <ion-icon name="chevron-up-outline"></ion-icon>
+                    <img class="profile-img" src="../image/redditlogoMobile.PNG" alt="profile-image">
+                    <p class="username">username</p>
+                </div>
+                <div class="users">
+                    <p>2</p>
+                    <ion-icon name="chevron-up-outline"></ion-icon>
+                    <img class="profile-img" src="../image/redditlogoMobile.PNG" alt="profile-image">
+                    <p class="username">username</p>
+                </div>
+
+        </div>
+
+</section>
+
+<!-- <script src="../js/index.js"></script> -->
+    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="../js/userProfile.js" ></script>
+    <script src="../js/dom.js"></script>
+</body>
+</html>
