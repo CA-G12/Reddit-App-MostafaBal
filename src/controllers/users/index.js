@@ -10,6 +10,4 @@ const { currentUserinfo } = require('./currentUserinfo');
 
 const { userProfile } = require('./userProfile');
 
-module.exports = {
-  signUp, login, logout, currentUserinfo, checkAuth, userProfile
-};
+module.exports = { signUp, login, logout, checkAuth, currentUserinfo, userProfile };

@@ -9,9 +9,10 @@ const login = (req, res) => {
   checkValidEmailQuery(email).then((userInfo) => {
     bcrypt.compare(password, userInfo.rows[0].password).then((compareResult) => {
       if (compareResult) {
+        console.log(userInfo.rows[0])
         const { id, emailToken } = userInfo.rows[0];
         generateToken({ id, emailToken }).then((token) => {
-          res.cookie('token', token, { httpOnly: true, secure: true }).json({ isLogged: true });
+          res.cookie('token', token, { httpOnly: true, secure: true }).json({ isLogged: true, id });
         });
       }
     });
