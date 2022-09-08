@@ -2,8 +2,8 @@ const {
   signUp, login, currentUserinfo, checkAuth,
 } = require('./users');
 
-const { showAllPosts } = require('./posts');
+const { showAllPosts, addPost } = require('./posts');
 
 module.exports = {
-  signUp, showAllPosts, login, currentUserinfo, checkAuth,
+  signUp, showAllPosts, login, currentUserinfo, checkAuth, addPost
 };
