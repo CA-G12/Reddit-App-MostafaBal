@@ -8,6 +8,8 @@ const { checkAuth } = require('./checkAuth');
 
 const { currentUserinfo } = require('./currentUserinfo');
 
+const { userProfile } = require('./userProfile');
+
 module.exports = {
-  signUp, login, logout, currentUserinfo, checkAuth,
+  signUp, login, logout, currentUserinfo, checkAuth, userProfile
 };
