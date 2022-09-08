@@ -7,10 +7,8 @@ const signupPassword = document.querySelector('#sign-up .password');
 const signupConfirmPassword = document.querySelector('#sign-up .confirm-password');
 
 const signupButton = document.querySelector('#sign-up button');
-console.log('*********', signupButton);
 
 const loginButton = document.querySelector('#login button');
-console.log('*********', loginButton);
 
 const loginEmail = document.querySelector('#login .email');
 
@@ -34,6 +32,14 @@ const navigationUsername = document.querySelector('.userBx .username');
 
 const navigationUserImage = document.querySelector('.imgBx img');
 
+fetch('/checkAuth')
+  .then((checkAuthResult) => checkAuthResult.json())
+  .then((userId) => {
+    if (userId.id) {
+      navIsLogged.style.display = 'flex';
+      navNotLogged.style.display = 'none';
+    }
+  });
 
 fetch('/allPosts')
   .then((data) => data.json())
@@ -95,18 +101,8 @@ signupButton.addEventListener('click', () => {
     fetch('/signUp', header)
       .then((data) => data.json())
       .then((res) => {
-        // if (res.isLogged === true) {
-        //   navIsLogged.style.display = 'block';
-        //   navNotLogged.style.display = 'none';
-        // } else {
-        //   navIsLogged.style.display = 'none';
-        //   navNotLogged.style.display = 'block';
-        // }
         if (res.isLogged === true) {
-          // navIsLogged.style.display = 'flex';
-          // navNotLogged.style.display = 'none';
           window.location.reload();
-          // return res.id;
         }
         navIsLogged.style.display = 'none';
         navNotLogged.style.display = 'flex';
@@ -131,7 +127,6 @@ loginButton.addEventListener('click', () => {
   fetch('/login', header)
     .then((data) => data.json())
     .then((res) => {
-      console.log('when login ', res);
       if (res.isLogged === true) {
       // navIsLogged.style.display = 'flex';
       // navNotLogged.style.display = 'none';
@@ -149,10 +144,9 @@ fetch('/userinfo')
   .then((userInfoResult) => {
     navigationUsername.textContent = userInfoResult.username;
     navigationUserImage.src = userInfoResult.profile_image;
-    // navigationUserID.textContent = userInfoResult.id;
   });
 
-  //! dropDown menu
+//! dropDown menu
 const menuToggle = document.querySelector('.menuToggle');
 const navigation = document.querySelector('.navigation');
 menuToggle.addEventListener('click', () => {
