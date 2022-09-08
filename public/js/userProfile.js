@@ -2,6 +2,15 @@ const navigationUsername = document.querySelector('.userBx .username');
 
 const navigationUserImage = document.querySelector('.imgBx img');
 
+// fetch('/checkAuth')
+//   .then((checkAuthResult) => checkAuthResult.json())
+//   .then((userId) => {
+//     console.log('test', userId);
+//     if (userId.id) {
+//       navIsLogged.style.display = 'flex';
+//     }
+//   });
+
 fetch('/userinfo')
   .then((userInfo) => userInfo.json())
   .then((userInfoResult) => {

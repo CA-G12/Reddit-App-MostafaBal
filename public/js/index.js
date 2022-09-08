@@ -7,8 +7,10 @@ const signupPassword = document.querySelector('#sign-up .password');
 const signupConfirmPassword = document.querySelector('#sign-up .confirm-password');
 
 const signupButton = document.querySelector('#sign-up button');
+console.log('*********', signupButton);
 
 const loginButton = document.querySelector('#login button');
+console.log('*********', loginButton);
 
 const loginEmail = document.querySelector('#login .email');
 
@@ -32,10 +34,14 @@ const navigationUsername = document.querySelector('.userBx .username');
 
 const navigationUserImage = document.querySelector('.imgBx img');
 
+
 fetch('/checkAuth')
   .then((checkAuthResult) => checkAuthResult.json())
   .then((userId) => {
+    console.log(userId);
+    console.log('test', userId);
     if (userId.id) {
+      console.log('fucking check-auth');
       navIsLogged.style.display = 'flex';
       navNotLogged.style.display = 'none';
     }
@@ -140,17 +146,19 @@ signupButton.addEventListener('click', () => {
       .then((data) => data.json())
       .then((res) => {
         if (res.isLogged === true) {
-          window.location.reload();
+          navIsLogged.style.display = 'block';
+          navNotLogged.style.display = 'none';
+        } else {
+          navIsLogged.style.display = 'none';
+          navNotLogged.style.display = 'block';
         }
-        navIsLogged.style.display = 'none';
-        navNotLogged.style.display = 'flex';
       })
       .catch((err) => console.log(err));
   } else {
-    window.alert('password Not match');
+    window.alert('تتهبلش');
   }
 });
-
+//! Done
 loginButton.addEventListener('click', () => {
   const header = {
     method: 'POST',
@@ -165,23 +173,46 @@ loginButton.addEventListener('click', () => {
   fetch('/login', header)
     .then((data) => data.json())
     .then((res) => {
+      console.log('when login ', res);
       if (res.isLogged === true) {
-      // navIsLogged.style.display = 'flex';
-      // navNotLogged.style.display = 'none';
+        // navIsLogged.style.display = 'flex';
+        // navNotLogged.style.display = 'none';
         window.location.reload();
-      // return res.id;
+        // return res.id;
       }
       navIsLogged.style.display = 'none';
       navNotLogged.style.display = 'flex';
     })
+    // .then((id) => {
+    //   fetch(`/userinfo/${id}`)
+    //     .then((userInfo) => userInfo.json())
+    //     .then((userInfoResult) => {
+    //       console.log('**********', userInfoResult);
+    //       navigationUsername.textContent = userInfoResult.username;
+    //       navigationUserImage.src = userInfoResult.profile_image;
+    //       // navigationUserID.textContent = userInfoResult.id;
+    //     });
+  // })
     .catch((err) => console.log(err));
 });
 
+// logoutBtn.addEventListener('click', () => {
+
+//   // fetch('/logout', header1)
+//   //   .then((logout) => logout.json())
+//   //   .then((logoutResult) => {
+//   //     window.location.href = logoutResult.msg;
+//   //   })
+//   //   .catch((err) => console.log(err));
+// });
+
+// get some user information for navigation
 fetch('/userinfo')
   .then((userInfo) => userInfo.json())
   .then((userInfoResult) => {
     navigationUsername.textContent = userInfoResult.username;
     navigationUserImage.src = userInfoResult.profile_image;
+    // navigationUserID.textContent = userInfoResult.id;
   });
 
 //! dropDown menu

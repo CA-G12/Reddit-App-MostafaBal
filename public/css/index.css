@@ -1,3 +1,401 @@
-#logged{
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+
+}
+
+body{
+    background-color: #DAE0E6;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: white;
+    z-index: 5;
+
+
+}
+nav .search-container{
+    align-items: center;
+    width:50% ;
+    padding:2px 5px;
+    display: flex;
+    justify-content: flex-start;
+    border-radius: 4px;
+    background-color:#F5F5F5 ;
+}
+nav .search-container input{
+    align-items: center;
+    width:90% ;
+    height: 100%;
+    border: none;
+    outline: none;
+    display: block;
+    padding-left: 20px;    
+    background-color: transparent;
+
+}
+nav .search-container ion-icon{
+    font-size: 1.3rem;
+}
+
+nav .btns-container{
+    width: 280px;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav .btns-container button{
+    padding: 0.3rem 0rem;
+    border-radius: 27px;
+    font-size: 18px;
+    width: 130px;
+    border: none;
+    font-weight: 600;
+    background-color: white;
+
+}
+nav .btns-container :first-child{
+    border: 1px solid #0079D3 ;
+    color:  #0079D3;
+    
+}
+nav .btns-container :last-child{
+    color: white;
+    background-color:  #0079D3;
+}
+
+#not-logged{
+    display: flex;
+}
+nav#logged{
     display: none;
+    justify-content: flex-start;
+
+}
+nav#logged .search-container{
+    margin-left: 130px;
+}
+
+/*******************************************************************/
+.navigation{
+    position: absolute;
+    top: 3px;
+    right: 25px;
+    width: 120px;
+    height: 50px;
+    background-color: #fff;
+    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content:space-between ;
+    transition: height 0.5s ,width 0.5s;
+    transition-delay: 0s , 0.75s;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.navigation.active{
+width: 300px;
+height: 400px;
+transition: width 0.5s , height 0.5s;
+transition-delay: 0s , 0.75s;
+}
+
+
+.navigation .userBx {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    overflow:hidden;
+    align-items: center;
+    transition: 0.5s;
+    transition-delay:0.5s ;
+}
+
+.navigation.active .userBx{
+    width: calc(100% - 60px );
+    transition-delay:0s ;
+
+}
+
+.navigation .userBx .username {
+white-space: nowrap;
+color: #555;
+font-size: 1.1em;
+}
+
+.navigation .userBx .imgBx {
+    position: relative;
+    min-width: 60px ;
+    height: 60px;
+    overflow: hidden;
+    background-color: #000;
+    border-radius: 50%;
+    border: 10px solid #fff;
+
+}
+
+.navigation .userBx .imgBx img {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.navigation .menuToggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation .menuToggle::before{
+content: '';
+position: absolute;
+width: 32px;
+height: 2px;
+background-color: #555;
+transform: translateY(-10px);
+box-shadow: 0 10px #555;
+transition: 0.5s;
+}
+
+.navigation .menuToggle::after{
+    content: '';
+    position: absolute;
+    width: 32px;
+    height: 2px;
+    background-color: #555;
+    transform: translateY(10px);
+    transition: 0.5s;
+    }
+
+.navigation.active .menuToggle::before{
+    transform: translateY(0px) rotate(45deg) ;
+    box-shadow: 0 0 #555;
+}
+
+.navigation.active .menuToggle::after{
+    transform: translateY(0px) rotate(-45deg) ;
+}
+
+.menu{
+    position: absolute;
+    width: 100%;
+    height:calc(100% - 60px) ;
+    margin-top: 60px;
+    padding: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    list-style: none;
+}
+.menu .user-id{
+    display: block;
+}
+.menu li {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    font-size: 1em;
+    gap: 10px;
+}
+
+.menu li ion-icon{
+    font-size: 1.5em;
+}
+
+/*******************************************************************/
+/* <!-- <div class="post-card">
+<div class="profile-username-container">
+    <img class="profile-img" src="profile" alt="profile-image">
+    <p class="username">username</p>
+</div>
+<p class="date-time">9 set 2001</p>
+<h2 class="post-title">title</h2>
+<p class="post-content">content</p>
+<img class="post-img" src="post-img" alt="post-image">
+</div> --> */
+
+
+main{
+    width: 80%;
+    margin: 30px auto;
+}
+section#posts-topUsers-container{
+    display: flex;
+    justify-content: space-between;
+
+}
+/******************** top-users  ************************************************/
+
+#top-users-menu{
+    width: 28%;
+    height: 481px;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 5px;
+    border: rgb(184, 182, 182) 1px solid;
+
+
+
+}
+#top-users-menu h3:first-child{
+    height: 100px;
+    display: flex;
+    justify-content:flex-start;
+    align-items: flex-end;
+    padding: 8px;
+    color: white;
+    background-image: url(https://styles.redditmedia.com/t5_2qwis/styles/bannerBackgroundImage_xsfxgk8a28g01.png);
+}
+
+#top-users-menu .users{
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    margin-top: 7px;
+    padding: 0px 20px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.493);
+    padding-bottom: 5px;
+}
+.users ion-icon{
+    color: rgb(8, 182, 8);
+    padding-left: 15px;
+}
+.users img{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 10px;
+}
+/******************** all post  ************************************************/
+#all-posts{
+    width: 70%;
+}
+div.post-card{
+    border: rgb(184, 182, 182) 1px solid;
+    padding: 10px 20px 10px 40px;
+    width: 100%;
+    background-color: white;
+    margin-top: 20px;
+    border-radius: 5px;
+    position: relative;
+
+}
+
+div.post-card .vote{
+    width: max-content;
+    position: absolute;
+    left: 5px;
+    text-align: center;
+}
+div.post-card .vote :first-child,div.post-card .vote :last-child{
+    border: 1px solid  rgb(184, 182, 182) ;
+    padding: 4px 2px;
+    margin-top: 5px;
+    border-radius: 3px;  
+    cursor: pointer;
+
+}
+
+div.post-card .profile-username-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 2px auto;
+    cursor: pointer;
+
+}
+
+div.post-card .profile-username-container .profile-img{
+    width: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+
+}
+div.post-card .profile-username-container .username {
+    padding-left: 8px;
+    padding-right: 10px;
+    font-size: 17px;
+
+}
+div.post-card .profile-username-container :last-child{
+    color:#7c7c7c;
+    font-size: 13px;
+}
+
+
+div.post-card .post-title{
+    font-weight: 600;
+    padding: 5px 0;
+}
+
+div.post-card .post-content{
+    padding: 0 0 10px  0 ;
+    
+}
+div.post-card .post-img{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    
+}
+div.post-card .comments{
+    display: flex;
+    justify-content: flex-start;
+    width: max-content;
+    padding: 7px;
+    margin-top: 10px;
+    border-radius: 3px;
+    color: #898989;
+    font-weight: 600 ;
+    font-size: 13px;
+    cursor: pointer;
+}
+div.post-card .comments:hover{
+    background-color: #DAE0E6;
+}
+
+div.post-card .comments :first-child{
+    font-size: 20px;
+    margin-left: 0;
+
+}
+div.post-card .comments :last-child{
+    margin-left: 10px;
+}
+/***************************login & sign up popup*****************************************/
+
+section#popup{
+    width: 70%;
+    margin: 5px auto;
+    background-color: white;
+    display: flex;
+    /* position:fixed; */
+    /* top: 0; */
+    height: 98vh;
+    z-index: 10;
+    border-radius: 6px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    transition: 0.5s;
+}
+
+section#popup #sign-up{
+    display: block;
+}
+
+section#popup input {
+    display: block;
 }

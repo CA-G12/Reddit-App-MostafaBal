@@ -1,7 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
-
+const jwt = require('./middlewares/verifyToken');
 const router = require('./routes');
 
 const app = express();
@@ -12,9 +12,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(compression());
 app.use(express.static('public'));
-// app.get('/:mostafa',(req,res)=>{
-//     console.log(req.params)
-//     res.send(`hi ${req.params.mostafa}`)
-// })
+// app.use('/userProfile', jwt, express.static('privateProfile'), express.static('public'));
+// app.use('/userProfile', jwt, express.static('public'));
+
 app.use(router);
 module.exports = app;
