@@ -1,3 +1,5 @@
 const showAllPosts = require('./showAllPosts');
 
-module.exports = { showAllPosts };
+const addPost = require('./addPost');
+
+module.exports = { showAllPosts, addPost };
