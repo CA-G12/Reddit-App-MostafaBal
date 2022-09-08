@@ -7,8 +7,10 @@ const signupPassword = document.querySelector('#sign-up .password');
 const signupConfirmPassword = document.querySelector('#sign-up .confirm-password');
 
 const signupButton = document.querySelector('#sign-up button');
+console.log('*********', signupButton);
 
 const loginButton = document.querySelector('#login button');
+console.log('*********', loginButton);
 
 const loginEmail = document.querySelector('#login .email');
 
@@ -19,6 +21,19 @@ const allPosts = document.querySelector('#all-posts');
 const navIsLogged = document.querySelector('#logged');
 
 const navNotLogged = document.querySelector('#not-logged');
+
+const navLoginBtn = document.getElementById('login-btn');
+
+console.log(navLoginBtn);
+
+const navSignUpBtn = document.querySelector('nav #sign-up-btn');
+
+console.log(navSignUpBtn);
+
+const navigationUsername = document.querySelector('.userBx .username');
+
+const navigationUserImage = document.querySelector('.imgBx img');
+
 
 fetch('/allPosts')
   .then((data) => data.json())
@@ -80,17 +95,25 @@ signupButton.addEventListener('click', () => {
     fetch('/signUp', header)
       .then((data) => data.json())
       .then((res) => {
+        // if (res.isLogged === true) {
+        //   navIsLogged.style.display = 'block';
+        //   navNotLogged.style.display = 'none';
+        // } else {
+        //   navIsLogged.style.display = 'none';
+        //   navNotLogged.style.display = 'block';
+        // }
         if (res.isLogged === true) {
-          navIsLogged.style.display = 'block';
-          navNotLogged.style.display = 'none';
-        } else {
-          navIsLogged.style.display = 'none';
-          navNotLogged.style.display = 'block';
+          // navIsLogged.style.display = 'flex';
+          // navNotLogged.style.display = 'none';
+          window.location.reload();
+          // return res.id;
         }
+        navIsLogged.style.display = 'none';
+        navNotLogged.style.display = 'flex';
       })
       .catch((err) => console.log(err));
   } else {
-    window.alert('تتهبلش');
+    window.alert('password Not match');
   }
 });
 
@@ -108,13 +131,30 @@ loginButton.addEventListener('click', () => {
   fetch('/login', header)
     .then((data) => data.json())
     .then((res) => {
+      console.log('when login ', res);
       if (res.isLogged === true) {
-        navIsLogged.style.display = 'block';
-        navNotLogged.style.display = 'none';
-      } else {
-        navIsLogged.style.display = 'none';
-        navNotLogged.style.display = 'block';
+      // navIsLogged.style.display = 'flex';
+      // navNotLogged.style.display = 'none';
+        window.location.reload();
+      // return res.id;
       }
+      navIsLogged.style.display = 'none';
+      navNotLogged.style.display = 'flex';
     })
     .catch((err) => console.log(err));
+});
+
+fetch('/userinfo')
+  .then((userInfo) => userInfo.json())
+  .then((userInfoResult) => {
+    navigationUsername.textContent = userInfoResult.username;
+    navigationUserImage.src = userInfoResult.profile_image;
+    // navigationUserID.textContent = userInfoResult.id;
+  });
+
+  //! dropDown menu
+const menuToggle = document.querySelector('.menuToggle');
+const navigation = document.querySelector('.navigation');
+menuToggle.addEventListener('click', () => {
+  navigation.classList.toggle('active');
 });
