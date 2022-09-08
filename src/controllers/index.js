@@ -1,9 +1,9 @@
 const {
-  signUp, login, currentUserinfo, checkAuth,
+  signUp, login, logout, currentUserinfo, checkAuth,
 } = require('./users');
 
 const { showAllPosts, addPost } = require('./posts');
 
 module.exports = {
-  signUp, showAllPosts, login, currentUserinfo, checkAuth, addPost
+  signUp, showAllPosts, login, logout, currentUserinfo, checkAuth, addPost,
 };
