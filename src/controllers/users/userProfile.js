@@ -2,7 +2,10 @@ const { userProfileQuery } = require('../../database/queries');
 
 const userProfile = (req, res) => {
   const { id } = req.token;
+    console.log('userprofile req.token controoooler', id);
   const { idParam } = req.params;
+
+    console.log('userprofile  req.params controoooler', idParam);
 
   if (idParam) {
     console.log(idParam);
