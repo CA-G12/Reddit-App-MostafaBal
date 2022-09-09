@@ -34,6 +34,18 @@ const navigationUsername = document.querySelector('.userBx .username');
 
 const navigationUserImage = document.querySelector('.imgBx img');
 
+const popup = document.querySelector('#popup');
+
+const closePopup = document.querySelector('#popup ion-icon');
+
+const popupLogin = document.querySelector('#popup #login');
+
+const popupSignUp = document.querySelector('#popup #sign-up');
+
+const newRedditorBtn = document.querySelector('#popup #login .new-redditor');
+
+const alreadyRedditorBtn = document.querySelector('#popup #sign-up .login-redditor');
+// console.log(123456,newRedditorBtn,alreadyRedditorBtn)
 
 fetch('/checkAuth')
   .then((checkAuthResult) => checkAuthResult.json())
@@ -155,7 +167,7 @@ signupButton.addEventListener('click', () => {
       })
       .catch((err) => console.log(err));
   } else {
-    window.alert('تتهبلش');
+    window.alert('passwords not match');
   }
 });
 //! Done
@@ -196,16 +208,6 @@ loginButton.addEventListener('click', () => {
     .catch((err) => console.log(err));
 });
 
-// logoutBtn.addEventListener('click', () => {
-
-//   // fetch('/logout', header1)
-//   //   .then((logout) => logout.json())
-//   //   .then((logoutResult) => {
-//   //     window.location.href = logoutResult.msg;
-//   //   })
-//   //   .catch((err) => console.log(err));
-// });
-
 // get some user information for navigation
 fetch('/userinfo')
   .then((userInfo) => userInfo.json())
@@ -214,6 +216,48 @@ fetch('/userinfo')
     navigationUserImage.src = userInfoResult.profile_image;
     // navigationUserID.textContent = userInfoResult.id;
   });
+
+console.log(navLoginBtn);
+console.log(navSignUpBtn);
+
+//   .hidden{
+//     display: none;
+// }
+
+// .active{
+//     display: block;
+// }
+
+// .hidden{
+//   display: none;
+// }
+// console.log('123456', popupLogin, popupSignUp);
+
+navLoginBtn.addEventListener('click', () => {
+  popup.classList.toggle('active');
+  popupLogin.classList.remove('hidden');
+  popupSignUp.classList.add('hidden');
+});
+
+navSignUpBtn.addEventListener('click', () => {
+  popup.classList.toggle('active');
+  popupSignUp.classList.remove('hidden');
+  popupLogin.classList.add('hidden');
+});
+
+alreadyRedditorBtn.addEventListener('click', () => {
+  popupLogin.classList.remove('hidden');
+  popupSignUp.classList.add('hidden');
+});
+
+newRedditorBtn.addEventListener('click', () => {
+  popupSignUp.classList.remove('hidden');
+  popupLogin.classList.add('hidden');
+});
+
+closePopup.addEventListener('click', () => {
+  popup.classList.toggle('active');
+});
 
 //! dropDown menu
 const menuToggle = document.querySelector('.menuToggle');
