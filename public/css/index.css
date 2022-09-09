@@ -98,6 +98,7 @@ nav#logged .search-container{
     transition-delay: 0s , 0.75s;
     overflow: hidden;
     border-radius: 5px;
+    z-index: 10;
 }
 
 .navigation.active{
@@ -382,20 +383,150 @@ section#popup{
     width: 70%;
     margin: 5px auto;
     background-color: white;
-    display: flex;
-    /* position:fixed; */
-    /* top: 0; */
+    display: none;
+    position:fixed; 
+    top: 0; 
     height: 98vh;
     z-index: 10;
     border-radius: 6px;
     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
     transition: 0.5s;
+    
+}
+/* <ion-icon name="close-outline"></ion-icon> */
+
+section#popup ion-icon{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
 }
 
 section#popup #sign-up{
     display: block;
+    padding: 40px 25px;
+
+}
+section#popup #login{
+    display: block;
+    padding: 40px 25px;
+}
+
+section#popup #login h2 , section#popup #sign-up h2  {
+    font-weight: 600;
+    font-size: 21px;
+}
+section#popup #login p , section#popup #sign-up p  {
+    font-size: 13px;
+    margin-top: 15px;
+}
+section#popup #login p a , section#popup #sign-up p a{
+    text-decoration: none;
+    color: #0079D3;
+}
+
+section#popup #login div, section#popup #sign-up div{
+    /* border-top:1px solid #89898991 ; */
+    margin-top: 50px;
+}
+/** styling input field release 1 /
+/* section#popup #login input ,section#popup #sign-up input {
+    margin-bottom: 10px; 
+    border: 1px solid #898989;
+    outline: none;
+    border-radius: 4px;
+    width: 250px;
+    height: 45px;
+    padding: 0 5px;
+} */
+section#popup #login button:nth-child(3), section#popup #sign-up button:nth-child(5){
+    margin-bottom: 10px; 
+    border: none;
+    border-radius: 4px;
+    background-color: #0079D3;
+    color: white;
+    width: 260px;
+    height: 37px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 30px;
+}
+section#popup #login div p button , section#popup #sign-up div p button  {
+    border: none;
+    background-color: white;
+    color: #0079D3;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
 }
 
 section#popup input {
     display: block;
+}
+
+.hidden{
+    display: none !important;
+}
+
+.active{
+    display: flex !important;
+}
+
+
+/* styling input field  release 2 */
+.inputBox{
+    position: relative;
+    width: 260px;
+    height: 48px;
+    margin-top:  30px !important;
+}
+
+section#popup #login input ,section#popup #sign-up input {
+    outline: none;
+    border-radius: 5px ;
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    transition: 0.5s;
+    height: 100%;
+    position:absolute;
+    top: 0;
+}
+.inputBox input{
+padding: 10px;
+width: 100%;
+ outline: none;
+ border: 1px solid #898989;
+ border-radius: 5px ;
+ font-size: 1em;
+ transition: 0.5s;
+}
+
+.inputBox span{
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 10px;
+    pointer-events:none ;
+    font-size: 1em;
+    color: #7c7c7c;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+.inputBox input:valid ~ span, .inputBox input:focus ~ span{
+    color: #0079D3;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background-color: white;
+    border-left: 1px solid #0079D3;
+    border-right: 1px solid #0079D3;
+    letter-spacing: 0.2em;
+}
+
+
+.inputBox input:valid, .inputBox input:focus{
+    border: 1px solid #0079D3;
 }

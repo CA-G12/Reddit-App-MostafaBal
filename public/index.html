@@ -138,19 +138,27 @@
 
         <section id="popup">
             <img src="./image/loginBG.png" alt="">
-            
+            <ion-icon name="close-outline"></ion-icon>
             <div id="login-signup-container">
                 <div id="login">
-                    <h2>Log In</h2>
+                    <h2>Log in</h2>
                     <p>By continuing, you agree to our 
                         <a href="https://www.redditinc.com/policies/user-agreement">  User Agreement </a> and 
                         <a href="https://www.reddit.com/policies/privacy-policy"> Privacy Policy </a>.
                     </p>
                     <div>
-                        <input class="email" type="email">
-                        <input class="password" type="password">
+                        <div class="inputBox">
+                            <input class="email" type="email" required>
+                            <span>Email</span>
+                        </div>
+
+                        <div class="inputBox">
+                            <input class="password" type="password" required>
+                            <span>Password</span>
+                        </div>
+
                         <button>Log In</button> 
-                        <p>New to Reddit? <button>SIGN UP</button></p>
+                        <p>New to Reddit? <button class="new-redditor">SIGN UP</button></p>
                     </div>
                 </div>
 
@@ -161,12 +169,30 @@
                     <a href="https://www.reddit.com/policies/privacy-policy"> Privacy Policy </a>.
                     </p>
                 <div>
-                    <input class="username" type="text" placeholder="username">
+                    <!-- <input class="username" type="text" placeholder="username">                    
                     <input class="email" type="email" placeholder="email">
                     <input class="password" type="password" placeholder="password">
-                    <input class="confirm-password" type="password" placeholder="confirm-password">
+                    <input class="confirm-password" type="password" placeholder="confirm-password"> -->
+
+                    <div class="inputBox">
+                        <input class="username" type="text" required>
+                        <span>username</span>
+                    </div>
+                    <div class="inputBox">
+                        <input class="email" type="email" required>
+                        <span>email</span>
+                    </div>
+                    <div class="inputBox">
+                        <input class="password" type="password" required>
+                        <span>password</span>
+                    </div>
+                    <div class="inputBox">
+                        <input class="confirm-password" type="password" required>
+                        <span>confirm password</span>
+                    </div>
+                    
                     <button>Sign Up</button> 
-                    <p>Already a redditor? <button>Log In</button></p>
+                    <p>Already a redditor? <button class="login-redditor" >Log In</button></p>
                 </div>
                 </div>
             </div>
