@@ -74,14 +74,60 @@ fetch('/allPosts')
 
       const voteUp = document.createElement('ion-icon');
       voteUp.setAttribute('name', 'arrow-up-outline');
+      const numberOfVote = document.createElement('p');
+
+      voteUp.addEventListener('click', () => {
+        const header = {
+          method: 'POST',
+          body: JSON.stringify({
+            postId: ele.id,
+            voteValue: 1,
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        };
+        fetch('/addVote', header)
+          .then((addVote) => addVote.json())
+          .then((addVoteResult) => {
+            console.log('addVoteResult 99999999999999', addVoteResult);
+            if (addVoteResult.vote === 0 || addVoteResult.vote === 1) {
+              numberOfVote.textContent = (numberOfVote.textContent * 1) + 1;
+            }
+          })
+          .catch((err) => console.log(err));
+      });
+
       voteContainer.appendChild(voteUp);
 
-      const numberOfVote = document.createElement('p');
-      numberOfVote.textContent = '9';
+      numberOfVote.textContent = ele.total_votes;
       voteContainer.appendChild(numberOfVote);
 
       const voteDown = document.createElement('ion-icon');
       voteDown.setAttribute('name', 'arrow-down-outline');
+
+      voteDown.addEventListener('click', () => {
+        const header = {
+          method: 'POST',
+          body: JSON.stringify({
+            postId: ele.id,
+            voteValue: -1,
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        };
+        fetch('/addVote', header)
+          .then((addVote) => addVote.json())
+          .then((addVoteResult) => {
+            console.log('addVoteResult 99999999999999', addVoteResult);
+            if (addVoteResult.vote === 0 || addVoteResult.vote === -1) {
+              numberOfVote.textContent = (numberOfVote.textContent * 1) - 1;
+            }
+          })
+          .catch((err) => console.log(err));
+      });
+
       voteContainer.appendChild(voteDown);
       //! !!!!!! on click here to move profile page
       const profileUsernameContainer = document.createElement('div');
@@ -103,13 +149,13 @@ fetch('/allPosts')
       profileUsernameContainer.appendChild(username);
 
       const userId = document.createElement('p');
-      // userId.setAttribute('class', 'date-time');
+      userId.style.display = 'none';
       userId.textContent = ele.user_id;
       profileUsernameContainer.appendChild(userId);
 
       const dateTime = document.createElement('p');
       dateTime.setAttribute('class', 'date-time');
-      dateTime.textContent = ele.data_time;
+      dateTime.textContent = ele.date_time;
       profileUsernameContainer.appendChild(dateTime);
 
       const postTitle = document.createElement('h2');
