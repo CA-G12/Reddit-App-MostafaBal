@@ -33,6 +33,27 @@ if (id) {
     .then((res) => {
       console.log('user profile by token', res);
       domForPosts(res);
+      res.forEach((ele, i) => {
+        const postCard = document.querySelectorAll('.post-card')[i];
+        const deleteBtn = document.createElement('p');
+        deleteBtn.addEventListener('click', () => {
+          const header = {
+            method: 'DELETE',
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+          };
+          fetch(`/deletePost/${ele.id}`, header)
+            .then((data) => data.json())
+            .then((res) => {
+              console.log(res);
+              window.location.reload()
+            })
+            .catch((err) => console.log(err));
+        });
+        deleteBtn.textContent = 'delete';
+        postCard.appendChild(deleteBtn);
+      });
     });
 }
 
