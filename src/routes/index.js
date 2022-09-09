@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const {
-  signUp, showAllPosts, login, logout, checkAuth, addPost, currentUserinfo, userProfile,
+  signUp, showAllPosts, login, logout, checkAuth, addPost, currentUserinfo, userProfile, addVote
 } = require('../controllers');
 
 const verifyToken = require('../middlewares/verifyToken');
@@ -21,5 +21,7 @@ router.post('/addPost', verifyToken, addPost);
 router.get('/userinfo', verifyToken, currentUserinfo);
 
 router.get('/userProfile/:idParam?', verifyToken, userProfile);
+
+router.post('/addVote', verifyToken, addVote);
 
 module.exports = router;
