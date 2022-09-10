@@ -7,10 +7,8 @@ const signupPassword = document.querySelector('#sign-up .password');
 const signupConfirmPassword = document.querySelector('#sign-up .confirm-password');
 
 const signupButton = document.querySelector('#sign-up button');
-console.log('*********', signupButton);
 
 const loginButton = document.querySelector('#login button');
-console.log('*********', loginButton);
 
 const loginEmail = document.querySelector('#login .email');
 
@@ -18,17 +16,15 @@ const loginPassword = document.querySelector('#login .password');
 
 const allPosts = document.querySelector('#all-posts');
 
+const topUsersMenu = document.querySelector('#top-users-menu');
+
 const navIsLogged = document.querySelector('#logged');
 
 const navNotLogged = document.querySelector('#not-logged');
 
 const navLoginBtn = document.getElementById('login-btn');
 
-console.log(navLoginBtn);
-
 const navSignUpBtn = document.querySelector('nav #sign-up-btn');
-
-console.log(navSignUpBtn);
 
 const navigationUsername = document.querySelector('.userBx .username');
 
@@ -45,15 +41,11 @@ const popupSignUp = document.querySelector('#popup #sign-up');
 const newRedditorBtn = document.querySelector('#popup #login .new-redditor');
 
 const alreadyRedditorBtn = document.querySelector('#popup #sign-up .login-redditor');
-// console.log(123456,newRedditorBtn,alreadyRedditorBtn)
 
 fetch('/checkAuth')
   .then((checkAuthResult) => checkAuthResult.json())
   .then((userId) => {
-    console.log(userId);
-    console.log('test', userId);
     if (userId.id) {
-      console.log('fucking check-auth');
       navIsLogged.style.display = 'flex';
       navNotLogged.style.display = 'none';
     }
@@ -63,7 +55,6 @@ fetch('/allPosts')
   .then((data) => data.json())
   .then((res) => {
     res.forEach((ele) => {
-      console.log(res[0]);
       const postCard = document.createElement('div');
       postCard.setAttribute('class', 'post-card');
       allPosts.appendChild(postCard);
@@ -90,7 +81,6 @@ fetch('/allPosts')
         fetch('/addVote', header)
           .then((addVote) => addVote.json())
           .then((addVoteResult) => {
-            console.log('addVoteResult 99999999999999', addVoteResult);
             if (addVoteResult.vote === 0 || addVoteResult.vote === 1) {
               numberOfVote.textContent = (numberOfVote.textContent * 1) + 1;
             }
@@ -120,7 +110,6 @@ fetch('/allPosts')
         fetch('/addVote', header)
           .then((addVote) => addVote.json())
           .then((addVoteResult) => {
-            console.log('addVoteResult 99999999999999', addVoteResult);
             if (addVoteResult.vote === 0 || addVoteResult.vote === -1) {
               numberOfVote.textContent = (numberOfVote.textContent * 1) - 1;
             }
@@ -186,6 +175,50 @@ fetch('/allPosts')
       postComments.appendChild(numberOfComments);
     });
   });
+//   <div id="top-users-menu">
+//   <h3>Most users post on Reddit</h3>
+//       <div class="users">
+//           <p>1</p>
+//           <ion-icon name="chevron-up-outline"></ion-icon>
+//           <img class="profile-img" src="./image/redditlogoMobile.PNG" alt="profile-image">
+//           <p class="username">username</p>
+//           <p class="num-of-posts">username</p>
+
+//       </div>
+// </div>
+fetch('/mostUsersPost')
+  .then((mostUsersPostResult) => mostUsersPostResult.json())
+  .then((result) => {
+    result.forEach((ele, i) => {
+      console.log('Most Users Post Result', result);
+      const user = document.createElement('div');
+      user.setAttribute('class', 'users');
+      topUsersMenu.appendChild(user);
+
+      const index = document.createElement('p');
+      index.textContent = i + 1;
+      user.appendChild(index);
+
+      const topIcon = document.createElement('ion-icon');
+      topIcon.setAttribute('name', 'chevron-up-outline');
+      user.appendChild(topIcon);
+
+      const userImg = document.createElement('img');
+      userImg.setAttribute('class', 'profile-img');
+      userImg.src = ele.profile_image;
+      user.appendChild(userImg);
+
+      const username = document.createElement('p');
+      username.setAttribute('class', 'username');
+      username.textContent = ele.username;
+      user.appendChild(username);
+
+      const numOfPosts = document.createElement('p');
+      numOfPosts.setAttribute('class', 'num-of-posts');
+      numOfPosts.textContent = `published ${ele.number_of_posts} posts`;
+      user.appendChild(numOfPosts);
+    });
+  });
 
 signupButton.addEventListener('click', () => {
   const header = {
@@ -203,12 +236,18 @@ signupButton.addEventListener('click', () => {
     fetch('/signUp', header)
       .then((data) => data.json())
       .then((res) => {
+        console.log('response when sign up', res);
         if (res.isLogged === true) {
-          navIsLogged.style.display = 'block';
-          navNotLogged.style.display = 'none';
+          // navIsLogged.style.display = 'block';
+          // navNotLogged.style.display = 'none';
+          caches.keys()
+            .then((keyList) => Promise.all(keyList.map((key) => caches.delete(key))).then(() => {
+              window.location.reload();
+            }));
         } else {
-          navIsLogged.style.display = 'none';
-          navNotLogged.style.display = 'block';
+          // navIsLogged.style.display = 'none';
+          // navNotLogged.style.display = 'block';
+          console.log('signup field');
         }
       })
       .catch((err) => console.log(err));
@@ -231,26 +270,16 @@ loginButton.addEventListener('click', () => {
   fetch('/login', header)
     .then((data) => data.json())
     .then((res) => {
-      console.log('when login ', res);
       if (res.isLogged === true) {
-        // navIsLogged.style.display = 'flex';
-        // navNotLogged.style.display = 'none';
-        window.location.reload();
-        // return res.id;
+        // window.location.reload();
+        caches.keys()
+          .then((keyList) => Promise.all(keyList.map((key) => caches.delete(key))).then(() => {
+            window.location.reload();
+          }));
       }
-      navIsLogged.style.display = 'none';
-      navNotLogged.style.display = 'flex';
+      // navIsLogged.style.display = 'none';
+      // navNotLogged.style.display = 'flex';
     })
-    // .then((id) => {
-    //   fetch(`/userinfo/${id}`)
-    //     .then((userInfo) => userInfo.json())
-    //     .then((userInfoResult) => {
-    //       console.log('**********', userInfoResult);
-    //       navigationUsername.textContent = userInfoResult.username;
-    //       navigationUserImage.src = userInfoResult.profile_image;
-    //       // navigationUserID.textContent = userInfoResult.id;
-    //     });
-  // })
     .catch((err) => console.log(err));
 });
 
@@ -262,22 +291,6 @@ fetch('/userinfo')
     navigationUserImage.src = userInfoResult.profile_image;
     // navigationUserID.textContent = userInfoResult.id;
   });
-
-console.log(navLoginBtn);
-console.log(navSignUpBtn);
-
-//   .hidden{
-//     display: none;
-// }
-
-// .active{
-//     display: block;
-// }
-
-// .hidden{
-//   display: none;
-// }
-// console.log('123456', popupLogin, popupSignUp);
 
 navLoginBtn.addEventListener('click', () => {
   popup.classList.toggle('active');

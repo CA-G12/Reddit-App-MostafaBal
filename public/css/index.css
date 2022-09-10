@@ -11,6 +11,14 @@
 body{
     background-color: #DAE0E6;
 }
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+button{
+    cursor: pointer;
+}
 nav{
     display: flex;
     justify-content: space-between;
@@ -18,8 +26,6 @@ nav{
     padding: 10px 20px;
     background-color: white;
     z-index: 5;
-
-
 }
 nav .search-container{
     align-items: center;
@@ -81,6 +87,21 @@ nav#logged{
 }
 nav#logged .search-container{
     margin-left: 130px;
+}
+nav#logged .btn{
+    border: 1px #7c7c7c solid;
+    padding: 8px 13px;
+    text-align: center;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+nav#logged .btn ion-icon{
+    font-size: 17;
+    font-weight: 600;
+}
+nav#logged .btn:hover {
+    border-color: #0079D3;
+    color: #0079D3;
 }
 
 /*******************************************************************/
@@ -268,11 +289,12 @@ section#posts-topUsers-container{
     margin-top: 7px;
     padding: 0px 20px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.493);
-    padding-bottom: 5px;
+    padding-bottom: 12px;
+    position: relative;
 }
 .users ion-icon{
     color: rgb(8, 182, 8);
-    padding-left: 15px;
+    padding-left: 10px;
 }
 .users img{
     width: 35px;
@@ -280,6 +302,18 @@ section#posts-topUsers-container{
     border-radius: 50%;
     object-fit: cover;
     margin-left: 10px;
+}
+.users .username{
+    padding-left: 5px;
+}
+.users .num-of-posts {
+    font-size: 13px;
+    color: #898989da;
+    padding-left: 5px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 4px;
 }
 /******************** all post  ************************************************/
 #all-posts{

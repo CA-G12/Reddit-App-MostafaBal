@@ -1,7 +1,3 @@
-// <input class="title" type="text" placeholder="title">
-// <input  class="content" type="text" placeholder="content">
-// <input class="image" type="text" placeholder="image">
-
 const title = document.querySelector('.title');
 const content = document.querySelector('.content');
 const image = document.querySelector('.image');
@@ -25,4 +21,12 @@ addPostBtn.addEventListener('click', () => {
       console.log(res);
     })
     .catch((err) => console.log(err));
+});
+
+//! dropDown menu
+
+const menuToggle = document.querySelector('.menuToggle');
+const navigation = document.querySelector('.navigation');
+menuToggle.addEventListener('click', () => {
+  navigation.classList.toggle('active');
 });
