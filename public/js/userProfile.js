@@ -24,14 +24,12 @@ if (id) {
   fetch(`/userProfile/${id}`)
     .then((data) => data.json())
     .then((res) => {
-      console.log('user profile by params', res);
       domForPosts(res);
     });
 } else {
   fetch('/userProfile/')
     .then((data) => data.json())
     .then((res) => {
-      console.log('user profile by token', res);
       domForPosts(res);
       res.forEach((ele, i) => {
         const postCard = document.querySelectorAll('.post-card')[i];
@@ -46,7 +44,6 @@ if (id) {
           fetch(`/deletePost/${ele.id}`, header)
             .then((data) => data.json())
             .then((res) => {
-              console.log(res);
               window.location.reload()
             })
             .catch((err) => console.log(err));

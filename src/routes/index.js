@@ -1,7 +1,8 @@
 const router = require('express').Router();
 
 const {
-  signUp, showAllPosts, login, logout, checkAuth, addPost, currentUserinfo, userProfile, addVote, deletePost
+  signUp, showAllPosts, login, logout, checkAuth, addPost, currentUserinfo,
+  userProfile, addVote, deletePost, mostUsersPost,
 } = require('../controllers');
 
 const verifyToken = require('../middlewares/verifyToken');
@@ -25,5 +26,7 @@ router.get('/userProfile/:idParam?', verifyToken, userProfile);
 router.post('/addVote', verifyToken, addVote);
 
 router.delete('/deletePost/:postId', verifyToken, deletePost);
+
+router.get('/mostUsersPost', mostUsersPost);
 
 module.exports = router;

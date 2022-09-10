@@ -5,14 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/addpost.css">
+    <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
+
+    
+<header>
+    
+    <nav id="logged">
+
+        <img class="logo" src="../image/redditLogo.PNG" alt="logo">
+        <div class="search-container">
+            <ion-icon name="search-outline"></ion-icon>
+            <input type="text" placeholder="Search Reddit">
+        </div>
+
+        <a class="btn" href="../html/addPost.html"><ion-icon name="add-outline"></ion-icon></a>
+        <a class="btn" href="../index.html"><ion-icon name="home-outline"></ion-icon></a>
+
+        <div class="navigation">
+                <div class="userBx">
+                        <div class="imgBx">
+                                <img src="../image/redditlogoMobile.PNG" alt="">
+                        </div>
+                        <p class="username">Mostafa</p>
+                </div>
+                <div class="menuToggle"></div>
+                <ul class="menu">
+                    <li><ion-icon name="person-outline"></ion-icon><a href="./userProfile.html" class="my-profile">My Profile</a></li>
+                    <li><ion-icon name="settings-outline"></ion-icon> <p> Setting </p> </li>
+                    <li id="logout-btn">    <ion-icon name="log-out-outline"></ion-icon><a href= "/logout"> Logout </a></li>
+                </ul>
+        </div>
+
+    </nav>
+</header>
+    
+<main>
+
     <input class="title" type="text" placeholder="title">
     <input  class="content" type="text" placeholder="content">
     <input class="image" type="text" placeholder="image">
     <button class="add-post-btn" >add Post</button>
+</main>
 
-
-<script src="../js/addpost.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="../js/userProfile.js" ></script>
+    <script src="../js/addpost.js"></script>
 </body>
 </html>
