@@ -189,35 +189,38 @@ fetch('/allPosts')
 fetch('/mostUsersPost')
   .then((mostUsersPostResult) => mostUsersPostResult.json())
   .then((result) => {
-    result.forEach((ele, i) => {
-      console.log('Most Users Post Result', result);
-      const user = document.createElement('div');
-      user.setAttribute('class', 'users');
-      topUsersMenu.appendChild(user);
+    domForMostUserPost(result)
 
-      const index = document.createElement('p');
-      index.textContent = i + 1;
-      user.appendChild(index);
+    // result.forEach((ele, i) => {
 
-      const topIcon = document.createElement('ion-icon');
-      topIcon.setAttribute('name', 'chevron-up-outline');
-      user.appendChild(topIcon);
+      // console.log('Most Users Post Result', result);
+      // const user = document.createElement('div');
+      // user.setAttribute('class', 'users');
+      // topUsersMenu.appendChild(user);
 
-      const userImg = document.createElement('img');
-      userImg.setAttribute('class', 'profile-img');
-      userImg.src = ele.profile_image;
-      user.appendChild(userImg);
+      // const index = document.createElement('p');
+      // index.textContent = i + 1;
+      // user.appendChild(index);
 
-      const username = document.createElement('p');
-      username.setAttribute('class', 'username');
-      username.textContent = ele.username;
-      user.appendChild(username);
+      // const topIcon = document.createElement('ion-icon');
+      // topIcon.setAttribute('name', 'chevron-up-outline');
+      // user.appendChild(topIcon);
 
-      const numOfPosts = document.createElement('p');
-      numOfPosts.setAttribute('class', 'num-of-posts');
-      numOfPosts.textContent = `published ${ele.number_of_posts} posts`;
-      user.appendChild(numOfPosts);
-    });
+      // const userImg = document.createElement('img');
+      // userImg.setAttribute('class', 'profile-img');
+      // userImg.src = ele.profile_image;
+      // user.appendChild(userImg);
+
+      // const username = document.createElement('p');
+      // username.setAttribute('class', 'username');
+      // username.textContent = ele.username;
+      // user.appendChild(username);
+
+      // const numOfPosts = document.createElement('p');
+      // numOfPosts.setAttribute('class', 'num-of-posts');
+      // numOfPosts.textContent = `published ${ele.number_of_posts} posts`;
+      // user.appendChild(numOfPosts);
+    // });
   });
 
 signupButton.addEventListener('click', () => {

@@ -2,15 +2,6 @@ const navigationUsername = document.querySelector('.userBx .username');
 
 const navigationUserImage = document.querySelector('.imgBx img');
 
-// fetch('/checkAuth')
-//   .then((checkAuthResult) => checkAuthResult.json())
-//   .then((userId) => {
-//     console.log('test', userId);
-//     if (userId.id) {
-//       navIsLogged.style.display = 'flex';
-//     }
-//   });
-
 fetch('/userinfo')
   .then((userInfo) => userInfo.json())
   .then((userInfoResult) => {
@@ -33,7 +24,7 @@ if (id) {
       domForPosts(res);
       res.forEach((ele, i) => {
         const postCard = document.querySelectorAll('.post-card')[i];
-        const deleteBtn = document.createElement('p');
+        const deleteBtn = document.createElement('ion-icon');
         deleteBtn.addEventListener('click', () => {
           const header = {
             method: 'DELETE',
@@ -43,16 +34,26 @@ if (id) {
           };
           fetch(`/deletePost/${ele.id}`, header)
             .then((data) => data.json())
-            .then((res) => {
-              window.location.reload()
+            .then((deleteResult) => {
+              if (deleteResult.isDeleted) {
+                postCard.style.display = 'none';
+              }
             })
             .catch((err) => console.log(err));
         });
-        deleteBtn.textContent = 'delete';
+        // deleteBtn.textContent = 'delete';
+        deleteBtn.setAttribute('class', 'delete-post');
+        deleteBtn.setAttribute('name', 'trash-outline');
         postCard.appendChild(deleteBtn);
       });
     });
 }
+
+fetch('/mostUsersPost')
+  .then((mostUsersPostResult) => mostUsersPostResult.json())
+  .then((result) => {
+    domForMostUserPost(result);
+  });
 
 //! dropDown menu
 

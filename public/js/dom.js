@@ -1,6 +1,5 @@
 const domForPosts = (res) => {
   const allPosts = document.querySelector('#all-posts');
-  console.log('allpost in genrec dom', allPosts);
   res.forEach((ele) => {
     const postCard = document.createElement('div');
     postCard.setAttribute('class', 'post-card');
@@ -122,5 +121,37 @@ const domForPosts = (res) => {
     const numberOfComments = document.createElement('p');
     numberOfComments.textContent = '9.5K Comments';
     postComments.appendChild(numberOfComments);
+  });
+};
+
+const domForMostUserPost = (result) => {
+  const topUsersMenu = document.querySelector('#top-users-menu');
+  result.forEach((ele, i) => {
+    const user = document.createElement('div');
+    user.setAttribute('class', 'users');
+    topUsersMenu.appendChild(user);
+
+    const index = document.createElement('p');
+    index.textContent = i + 1;
+    user.appendChild(index);
+
+    const topIcon = document.createElement('ion-icon');
+    topIcon.setAttribute('name', 'chevron-up-outline');
+    user.appendChild(topIcon);
+
+    const userImg = document.createElement('img');
+    userImg.setAttribute('class', 'profile-img');
+    userImg.src = ele.profile_image;
+    user.appendChild(userImg);
+
+    const username = document.createElement('p');
+    username.setAttribute('class', 'username');
+    username.textContent = ele.username;
+    user.appendChild(username);
+
+    const numOfPosts = document.createElement('p');
+    numOfPosts.setAttribute('class', 'num-of-posts');
+    numOfPosts.textContent = `published ${ele.number_of_posts} posts`;
+    user.appendChild(numOfPosts);
   });
 };
