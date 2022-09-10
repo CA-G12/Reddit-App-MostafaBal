@@ -42,14 +42,21 @@ const newRedditorBtn = document.querySelector('#popup #login .new-redditor');
 
 const alreadyRedditorBtn = document.querySelector('#popup #sign-up .login-redditor');
 
-fetch('/checkAuth')
-  .then((checkAuthResult) => checkAuthResult.json())
-  .then((userId) => {
-    if (userId.id) {
-      navIsLogged.style.display = 'flex';
-      navNotLogged.style.display = 'none';
-    }
-  });
+// window.addEventListener('DOMContentLoaded', (event) => {
+// console.log('DOM fully loaded and parsed');
+
+setTimeout(() => {
+  fetch('/checkAuth')
+    .then((checkAuthResult) => checkAuthResult.json())
+    .then((userId) => {
+      if (userId.id) {
+        navIsLogged.style.display = 'flex';
+        navNotLogged.style.display = 'none';
+      }
+    });
+}, 500);
+
+// });
 
 fetch('/allPosts')
   .then((data) => data.json())
@@ -84,7 +91,7 @@ fetch('/allPosts')
             if (addVoteResult.vote === 0 || addVoteResult.vote === 1) {
               numberOfVote.textContent = (numberOfVote.textContent * 1) + 1;
             }
-          })
+          }).then
           .catch((err) => console.log(err));
       });
 
