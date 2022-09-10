@@ -15,8 +15,8 @@ div#confirm-delete-container{
 
 
 
-/* Show msg when delete Account */
-#snackbarDeleteAccount {
+
+#snackbar {
     visibility: hidden; 
     min-width: 250px; 
     margin-left: -125px; 
@@ -30,7 +30,7 @@ div#confirm-delete-container{
     left: 50%; 
     bottom: 30px; 
   }
-    #snackbarDeleteAccount.show {
+    #snackbar.show {
     visibility: visible; 
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
   }

@@ -175,87 +175,56 @@ fetch('/allPosts')
       postComments.appendChild(numberOfComments);
     });
   });
-//   <div id="top-users-menu">
-//   <h3>Most users post on Reddit</h3>
-//       <div class="users">
-//           <p>1</p>
-//           <ion-icon name="chevron-up-outline"></ion-icon>
-//           <img class="profile-img" src="./image/redditlogoMobile.PNG" alt="profile-image">
-//           <p class="username">username</p>
-//           <p class="num-of-posts">username</p>
 
-//       </div>
-// </div>
 fetch('/mostUsersPost')
   .then((mostUsersPostResult) => mostUsersPostResult.json())
   .then((result) => {
-    domForMostUserPost(result)
-
-    // result.forEach((ele, i) => {
-
-      // console.log('Most Users Post Result', result);
-      // const user = document.createElement('div');
-      // user.setAttribute('class', 'users');
-      // topUsersMenu.appendChild(user);
-
-      // const index = document.createElement('p');
-      // index.textContent = i + 1;
-      // user.appendChild(index);
-
-      // const topIcon = document.createElement('ion-icon');
-      // topIcon.setAttribute('name', 'chevron-up-outline');
-      // user.appendChild(topIcon);
-
-      // const userImg = document.createElement('img');
-      // userImg.setAttribute('class', 'profile-img');
-      // userImg.src = ele.profile_image;
-      // user.appendChild(userImg);
-
-      // const username = document.createElement('p');
-      // username.setAttribute('class', 'username');
-      // username.textContent = ele.username;
-      // user.appendChild(username);
-
-      // const numOfPosts = document.createElement('p');
-      // numOfPosts.setAttribute('class', 'num-of-posts');
-      // numOfPosts.textContent = `published ${ele.number_of_posts} posts`;
-      // user.appendChild(numOfPosts);
-    // });
+    domForMostUserPost(result);
   });
 
 signupButton.addEventListener('click', () => {
-  const header = {
-    method: 'POST',
-    body: JSON.stringify({
-      username: signupUsername.value,
-      email: signupEmail.value,
-      password: signupPassword.value,
-    }),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
+  const usernamePattern = /^[a-zA-Z]{3,}\d?/;
+  const passwordPattern = /^(?=.*[0-9])(?=.*\W)[a-zA-Z0-9\W]{6,15}$/;
+  const emailPattern = /^[a-zA-Z0-9]{6,30}@gmail.com|@hotmail.com$/;
+
+  const validateInputs = (pattern, text) => {
+    if (pattern.test(text)) {
+      return true;
+    }
+    return false;
   };
-  if (signupPassword.value === signupConfirmPassword.value) {
+
+  if (validateInputs(usernamePattern, signupUsername.value)
+      && validateInputs(passwordPattern, signupPassword.value)
+      && validateInputs(emailPattern, signupEmail.value)
+      && signupPassword.value === signupConfirmPassword.value) {
+    const header = {
+      method: 'POST',
+      body: JSON.stringify({
+        username: signupUsername.value,
+        email: signupEmail.value,
+        password: signupPassword.value,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    };
     fetch('/signUp', header)
       .then((data) => data.json())
       .then((res) => {
-        console.log('response when sign up', res);
         if (res.isLogged === true) {
-          // navIsLogged.style.display = 'block';
-          // navNotLogged.style.display = 'none';
           caches.keys()
             .then((keyList) => Promise.all(keyList.map((key) => caches.delete(key))).then(() => {
               window.location.reload();
             }));
         } else {
-          // navIsLogged.style.display = 'none';
-          // navNotLogged.style.display = 'block';
           console.log('signup field');
+          window.alert(res.msg);
         }
       })
       .catch((err) => console.log(err));
   } else {
-    window.alert('passwords not match');
+    window.alert('Please verify the data entered');
   }
 });
 //! Done
@@ -274,14 +243,11 @@ loginButton.addEventListener('click', () => {
     .then((data) => data.json())
     .then((res) => {
       if (res.isLogged === true) {
-        // window.location.reload();
         caches.keys()
           .then((keyList) => Promise.all(keyList.map((key) => caches.delete(key))).then(() => {
             window.location.reload();
           }));
       }
-      // navIsLogged.style.display = 'none';
-      // navNotLogged.style.display = 'flex';
     })
     .catch((err) => console.log(err));
 });
@@ -292,9 +258,9 @@ fetch('/userinfo')
   .then((userInfoResult) => {
     navigationUsername.textContent = userInfoResult.username;
     navigationUserImage.src = userInfoResult.profile_image;
-    // navigationUserID.textContent = userInfoResult.id;
   });
 
+//! show and close popup
 navLoginBtn.addEventListener('click', () => {
   popup.classList.toggle('active');
   popupLogin.classList.remove('hidden');

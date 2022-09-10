@@ -24,19 +24,9 @@ const confirmDeleteContainer = document.querySelector('#confirm-delete-container
 
 const confirmDeleteBtn = document.querySelector('#confirm-delete');
 
-// <div id="delete-account">
-//     <button>delete</button>
-//     <div id="confirm-delete-container">
-//             <p>Are you sure to delete the account</p>
-//             <button id="confirm-delete">Confirm Delete</button>
-//     </div>
-
-// </div>
-
 fetch('/userinfo')
   .then((userInfo) => userInfo.json())
   .then((userInfoResult) => {
-    console.log('userInfoResult', userInfoResult);
     navigationUsername.textContent = userInfoResult.username;
     navigationUserImage.src = userInfoResult.profile_image;
     username.textContent = userInfoResult.username;
@@ -71,7 +61,6 @@ SaveUpdateBtn.addEventListener('click', () => {
   fetch('/updateProfile', header)
     .then((updateProfileResult) => updateProfileResult.json())
     .then((result) => {
-      console.log(result);
       username.textContent = result.username;
       userImg.src = result.profile_image;
       navigationUsername.textContent = result.username;
@@ -93,35 +82,26 @@ confirmDeleteBtn.addEventListener('click', () => {
   fetch('/deleteAccount', header)
     .then((deleteAccount) => deleteAccount.json())
     .then((deleteAccountResult) => {
-      console.log(deleteAccountResult);
-      if (deleteAccountResult.isDeleted) {
-        // myFunction(deleteAccountResult.isDeleted);
-        // window.location.href = '../index.html';
-        caches.keys()
-          .then((keyList) => Promise.all(keyList.map((key) => caches.delete(key))).then(() => {
-            setTimeout(() => {
-              window.location.href = '/';
-            }, 3000);
-            // window.location.href = '../index.html';
-          }));
-      }
+      myFunction();
+      caches.keys()
+        .then((keyList) => Promise.all(keyList.map((key) => caches.delete(key))).then(() => {
+          setTimeout(() => {
+            window.location.href = '/';
+          }, 5000);
+        }));
+    //   }
     });
 });
 
 //! show msg when delete Account
-// function myFunction(isDeleted) {
-//   const snackbar = document.getElementById('snackbarDeleteAccount');
-//   console.log('snackbar', snackbar);
-//   snackbar.className = 'show';
-//   setTimeout(() => {
-//     snackbar.className = snackbar.className.replace('show', '');
-//   }, 2999);
-//   if (isDeleted) {
-//     setTimeout(() => {
-//       window.location.href = '/';
-//     }, 3000);
-//   }
-// }
+function myFunction() {
+  const snackbar = document.getElementById('snackbar');
+  console.log('snackbar', snackbar);
+  snackbar.className = 'show';
+  setTimeout(() => {
+    snackbar.className = snackbar.className.replace('show', '');
+  }, 4999);
+}
 
 //! dropDown menu
 const menuToggle = document.querySelector('.menuToggle');

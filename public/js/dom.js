@@ -27,7 +27,6 @@ const domForPosts = (res) => {
       fetch('/addVote', header)
         .then((addVote) => addVote.json())
         .then((addVoteResult) => {
-          console.log('addVoteResult 99999999999999', addVoteResult);
           if (addVoteResult.vote === 0 || addVoteResult.vote === 1) {
             numberOfVote.textContent = (numberOfVote.textContent * 1) + 1;
           }
@@ -57,7 +56,6 @@ const domForPosts = (res) => {
       fetch('/addVote', header)
         .then((addVote) => addVote.json())
         .then((addVoteResult) => {
-          console.log('addVoteResult 99999999999999', addVoteResult);
           if (addVoteResult.vote === 0 || addVoteResult.vote === -1) {
             numberOfVote.textContent = (numberOfVote.textContent * 1) - 1;
           }

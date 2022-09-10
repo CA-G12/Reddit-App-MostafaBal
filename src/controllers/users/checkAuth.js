@@ -1,5 +1,4 @@
 const checkAuth = (req, res) => {
-  console.log('in controller', req.token);
   if (req.token.id) {
     res.json(req.token);
   } else {
