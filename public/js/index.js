@@ -45,23 +45,29 @@ const alreadyRedditorBtn = document.querySelector('#popup #sign-up .login-reddit
 // window.addEventListener('DOMContentLoaded', (event) => {
 // console.log('DOM fully loaded and parsed');
 
-setTimeout(() => {
-  fetch('/checkAuth')
-    .then((checkAuthResult) => checkAuthResult.json())
-    .then((userId) => {
-      if (userId.id) {
-        navIsLogged.style.display = 'flex';
-        navNotLogged.style.display = 'none';
-      }
-    });
-}, 1300);
+// setTimeout(() => {
+//   fetch('/checkAuth')
+//     .then((checkAuthResult) => checkAuthResult.json())
+//     .then((userId) => {
+//       if (userId.id) {
+//         navIsLogged.style.display = 'flex';
+//         navNotLogged.style.display = 'none';
+//       }
+//     });
+// }, 1300);
 
 // });
 
 fetch('/allPosts')
   .then((data) => data.json())
   .then((res) => {
-    res.forEach((ele) => {
+    // console.log(res);
+    if (res.userID) {
+      navIsLogged.style.display = 'flex';
+      navNotLogged.style.display = 'none';
+    }
+
+    res.data.forEach((ele) => {
       const postCard = document.createElement('div');
       postCard.setAttribute('class', 'post-card');
       allPosts.appendChild(postCard);
@@ -231,7 +237,7 @@ signupButton.addEventListener('click', () => {
       })
       .catch((err) => console.log(err));
   } else {
-    window.alert('Please verify the data entered');
+    window.alert('password must contain number and character and spacial character ');
   }
 });
 //! Done

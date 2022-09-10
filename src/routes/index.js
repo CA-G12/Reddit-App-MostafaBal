@@ -6,10 +6,12 @@ const {
 } = require('../controllers');
 
 const verifyToken = require('../middlewares/verifyToken');
+const checkauth = require('../middlewares/checkauth');
+
 
 router.get('/checkAuth', verifyToken, checkAuth);
 
-router.get('/allPosts', showAllPosts);
+router.get('/allPosts', checkauth, showAllPosts);
 
 router.post('/signUp', signUp);
 
@@ -27,7 +29,7 @@ router.post('/addVote', verifyToken, addVote);
 
 router.delete('/deletePost/:postId', verifyToken, deletePost);
 
-router.get('/mostUsersPost', mostUsersPost);
+router.get('/mostUsersPost', checkauth, mostUsersPost);
 
 router.put('/updateProfile', verifyToken, updateProfile);
 
