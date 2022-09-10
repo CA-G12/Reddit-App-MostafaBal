@@ -6,14 +6,14 @@ const {
 } = process.env;
 
 let connectionString = '';
-let ssl = false;
+// let ssl = false;
 
 switch (NODE_ENV) {
   case 'production':
     connectionString = DATABASE_URL;
-    ssl = {
-      rejectUnauthorized: false,
-    };
+    // ssl = {
+    //   rejectUnauthorized: false,
+    // };
     break;
   case 'dev':
     connectionString = DEV_DB_URL;
@@ -28,7 +28,7 @@ switch (NODE_ENV) {
 
 const connection = new Pool({
   connectionString,
-  ssl,
+  ssl: NODE_ENV !== 'production' ? false : { rejectUnauthorized: false },
 
 });
 
