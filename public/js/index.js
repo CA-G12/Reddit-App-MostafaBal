@@ -185,7 +185,7 @@ fetch('/mostUsersPost')
 signupButton.addEventListener('click', () => {
   const usernamePattern = /^[a-zA-Z]{3,}\d?/;
   const passwordPattern = /^(?=.*[0-9])(?=.*\W)[a-zA-Z0-9\W]{6,15}$/;
-  const emailPattern = /^[a-zA-Z0-9]{6,30}@gmail.com|@hotmail.com$/;
+  const emailPattern = /^[a-zA-Z0-9]{2,30}@gmail.com|@hotmail.com$/;
 
   const validateInputs = (pattern, text) => {
     if (pattern.test(text)) {
