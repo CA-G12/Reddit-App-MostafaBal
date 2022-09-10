@@ -20,9 +20,6 @@ addPostBtn.addEventListener('click', () => {
   fetch('/addPost', header)
     .then((data) => data.json())
     .then((res) => {
-      // res.json({ msg: 'You must at least add a picture, title or content', isAdded: false });
-
-      console.log(res.isAdded);
       if (res) {
         myFunction(res.isAdded, res.msg);
       }
