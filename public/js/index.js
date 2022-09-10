@@ -266,6 +266,7 @@ loginButton.addEventListener('click', () => {
 });
 
 // get some user information for navigation
+
 fetch('/userinfo')
   .then((userInfo) => userInfo.json())
   .then((userInfoResult) => {
