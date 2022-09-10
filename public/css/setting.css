@@ -1,0 +1,46 @@
+nav#logged{
+    display: flex !important;
+}
+div#update-userinfo{
+    display: none;
+}
+
+div#update-userinfo input{
+    display: block;
+    margin: 10px 0 ;
+}
+div#confirm-delete-container{
+    display: none;
+}
+
+
+
+/* Show msg when delete Account */
+#snackbarDeleteAccount {
+    visibility: hidden; 
+    min-width: 250px; 
+    margin-left: -125px; 
+    background-color:#0078d3cb;
+    color: #fff; 
+    text-align: center; 
+    border-radius: 2px; 
+    padding: 16px; 
+    position: fixed; 
+    z-index: 1; 
+    left: 50%; 
+    bottom: 30px; 
+  }
+    #snackbarDeleteAccount.show {
+    visibility: visible; 
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
