@@ -103,10 +103,12 @@ const domForPosts = (res) => {
     postContent.textContent = ele.content;
     postCard.appendChild(postContent);
 
-    const postImage = document.createElement('img');
-    postImage.setAttribute('class', 'post-img');
-    postImage.src = ele.post_image;
-    postCard.appendChild(postImage);
+    if (ele.post_image) {
+      const postImage = document.createElement('img');
+      postImage.setAttribute('class', 'post-img');
+      postImage.src = ele.post_image;
+      postCard.appendChild(postImage);
+    }
 
     const postComments = document.createElement('div');
     postComments.setAttribute('class', 'comments');
