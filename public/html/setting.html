@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/setting.css">
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/userProfile.css">
 </head>
 <body>
 
+    
 <header>
     
     <nav id="logged">
@@ -22,7 +23,6 @@
 
         <a class="btn" href="../html/addPost.html"><ion-icon name="add-outline"></ion-icon></a>
         <a class="btn" href="../index.html"><ion-icon name="home-outline"></ion-icon></a>
-
 
         <div class="navigation">
                 <div class="userBx">
@@ -39,74 +39,43 @@
                 </ul>
         </div>
 
-
-
-
-
     </nav>
-
-
 </header>
-
-
     
-
 <main>
-    <section id="trending-today" style="display:none ;">
-        <div class="trending-card">
-            <h2>title </h2>
-            <p>content</p>
-        </div>
-        <div class="trending-card">
-            <h2>title </h2>
-            <p>content</p>
-        </div>   
-        <div class="trending-card">
-            <h2>title </h2>
-            <p>content</p>
-        </div>  
-        <div class="trending-card">
-            <h2>title </h2>
-            <p>content</p>
-        </div>   
-    </section>
 
-    <section id="posts-topUsers-container">
+<section>
+    <div id="userinfo">
+        <p class="username">9 , 9 ,2001 </p>
+        <img src="" class="profile-image"></img>
+        <p class="account-date">9 , 9 ,2001 </p>
+        <button>Update Profile </button>
+    </div>
 
-        <div id="all-posts">
-            <!-- <div class="post-card">
-                <div class="vote">
-                    <ion-icon name="arrow-up-outline"></ion-icon>
-                    <p>5</p>
-                    <ion-icon name="arrow-down-outline"></ion-icon>            
-                </div>
+    <div id="update-userinfo">
+        <input class="username" type="text" placeholder="username">
+        <input class="profile-image"type="text" placeholder="image">
+        <button>Save</button>
+    </div>
 
-                <div class="profile-username-container">
-                    <img class="profile-img" src="profile" alt="profile-image">
-                    <p class="username">username</p>
-                </div>
-                <p class="date-time">9 set 2001</p>
-                <h2 class="post-title">title</h2>
-                <p class="post-content">content</p>
-                <img class="post-img" src="post-img" alt="post-image">
-                <div class="comments"> <ion-icon name="chatbox-outline"></ion-icon> <p>9.5K Comments</p></div>
-                </div>  -->
-
+    <div id="delete-account">
+        <button id="delete">delete</button>
+        <div id="confirm-delete-container">
+                <p>Are you sure to delete the account</p>
+                <button id="confirm-delete">Confirm Delete</button>
         </div>
 
-        <div id="top-users-menu">
-            <h3>Top Users In Reddit</h3>
-           
+    </div>
 
-        </div>
 
 </section>
+<div id="snackbarDeleteAccount">The account has been deleted successfully, let's see you soon</div>
 
-<!-- <script src="../js/index.js"></script> -->
-    
+</main>
+
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="../js/userProfile.js" ></script>
-    <script src="../js/dom.js"></script>
+    <!-- <script src="../js/userProfile.js" ></script> -->
+    <script src="../js/setting.js"></script>
 </body>
 </html>

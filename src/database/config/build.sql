@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS users, posts, votes, comments CASCADE;
 CREATE TABLE users(
   id SERIAL PRIMARY KEY,
   username VARCHAR(200) NOT NULL,
+  account_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   email VARCHAR(200) UNIQUE,
   password TEXT NOT NULL,
   profile_image TEXT DEFAULT 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPKevXJxjANQLI8UuioSqliVMY5UZhSFFWonzkGPqjEcE_zQgkzvYpvZJZeJIurcwfZkw&usqp=CAU'
