@@ -54,7 +54,7 @@ setTimeout(() => {
         navNotLogged.style.display = 'none';
       }
     });
-}, 500);
+}, 1300);
 
 // });
 
