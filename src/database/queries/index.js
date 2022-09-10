@@ -6,6 +6,8 @@ const { userProfileQuery } = require('./userProfile');
 const { currentUserinfoQuery } = require('./currentUserinfo');
 const { addVoteQuery, checkUserVote, updateVote } = require('./addVote');
 const { mostUsersPostQuery } = require('./mostUsersPost');
+const { updateProfileQuery } = require('./updateProfile');
+const { deleteAccountQuery } = require('./deleteAccount');
 
 module.exports = {
   checkValidEmailQuery,
@@ -19,4 +21,6 @@ module.exports = {
   updateVote,
   deletePostQuery,
   mostUsersPostQuery,
+  updateProfileQuery,
+  deleteAccountQuery,
 };
