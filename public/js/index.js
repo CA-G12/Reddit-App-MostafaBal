@@ -186,7 +186,15 @@ fetch('/allPosts')
       const numberOfComments = document.createElement('p');
       numberOfComments.textContent = '9.5K Comments';
       postComments.appendChild(numberOfComments);
-    });
+    }); 
+    return fetch('/userinfo')
+  })
+// get some user information for navigation
+
+  .then((userInfo) => userInfo.json())
+  .then((userInfoResult) => {
+    navigationUsername.textContent = userInfoResult.username;
+    navigationUserImage.src = userInfoResult.profile_image;
   });
 
 fetch('/mostUsersPost')
@@ -264,15 +272,6 @@ loginButton.addEventListener('click', () => {
     })
     .catch((err) => console.log(err));
 });
-
-// get some user information for navigation
-
-fetch('/userinfo')
-  .then((userInfo) => userInfo.json())
-  .then((userInfoResult) => {
-    navigationUsername.textContent = userInfoResult.username;
-    navigationUserImage.src = userInfoResult.profile_image;
-  });
 
 //! show and close popup
 navLoginBtn.addEventListener('click', () => {
