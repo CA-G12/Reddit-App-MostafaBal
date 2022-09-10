@@ -1,3 +1,21 @@
 nav#logged{
     display: flex !important;
 }
+
+.delete-post{
+    position: absolute;
+    top:12px  ;
+    right:12px;
+    border: 1px #7c7c7c solid;
+    padding: 8px 13px;
+    text-align: center;
+    border-radius: 3px;
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.delete-post:hover {
+    border-color: rgb(211, 15, 15);
+    color:  rgb(211, 15, 15);
+}

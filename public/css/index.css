@@ -351,6 +351,9 @@ div.post-card .profile-username-container{
     align-items: center;
     margin: 2px auto;
     cursor: pointer;
+    width: max-content;
+    margin: 0;
+    /* border: 2px red solid ; */
 
 }
 
