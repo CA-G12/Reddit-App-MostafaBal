@@ -65,6 +65,12 @@ fetch('/allPosts')
     if (res.userID) {
       navIsLogged.style.display = 'flex';
       navNotLogged.style.display = 'none';
+      fetch(`/userinfo/${res.userID}`)
+        .then((userInfo) => userInfo.json())
+        .then((userInfoResult) => {
+          navigationUsername.textContent = userInfoResult.username;
+          navigationUserImage.src = userInfoResult.profile_image;
+        });
     }
 
     res.data.forEach((ele) => {
@@ -186,16 +192,16 @@ fetch('/allPosts')
       const numberOfComments = document.createElement('p');
       numberOfComments.textContent = '9.5K Comments';
       postComments.appendChild(numberOfComments);
-    }); 
-    return fetch('/userinfo')
-  })
+    });
+  });
 // get some user information for navigation
 
-  .then((userInfo) => userInfo.json())
-  .then((userInfoResult) => {
-    navigationUsername.textContent = userInfoResult.username;
-    navigationUserImage.src = userInfoResult.profile_image;
-  });
+// fetch('/userinfo')
+//   .then((userInfo) => userInfo.json())
+//   .then((userInfoResult) => {
+//     navigationUsername.textContent = userInfoResult.username;
+//     navigationUserImage.src = userInfoResult.profile_image;
+//   });
 
 fetch('/mostUsersPost')
   .then((mostUsersPostResult) => mostUsersPostResult.json())
@@ -205,7 +211,7 @@ fetch('/mostUsersPost')
 
 signupButton.addEventListener('click', () => {
   const usernamePattern = /^[a-zA-Z]{3,}\d?/;
-  const passwordPattern = /^(?=.*[0-9])(?=.*\W)[a-zA-Z0-9\W]{6,15}$/;
+  const passwordPattern = /^(?=.*[0-9])[a-zA-Z0-9\W]{6,15}$/;
   const emailPattern = /^[a-zA-Z0-9]{2,30}@gmail.com|@hotmail.com$/;
 
   const validateInputs = (pattern, text) => {
@@ -245,7 +251,7 @@ signupButton.addEventListener('click', () => {
       })
       .catch((err) => console.log(err));
   } else {
-    window.alert('password must contain number and character and spacial character ');
+    window.alert('password must contain number and character');
   }
 });
 //! Done

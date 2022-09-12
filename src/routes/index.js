@@ -21,7 +21,7 @@ router.get('/logout', logout);
 
 router.post('/addPost', verifyToken, addPost);
 
-router.get('/userinfo', verifyToken, currentUserinfo);
+router.get('/userinfo/:idParam?', verifyToken, currentUserinfo);
 
 router.get('/userProfile/:idParam?', verifyToken, userProfile);
 
